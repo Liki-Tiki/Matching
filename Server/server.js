@@ -6,7 +6,7 @@ app.listen(8080, function() {
 })
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/src/index.html')
+  // res.sendFile('Client/src/index.html')
   // Note: __dirname is directory that contains the JavaScript source code. Try logging it and see what you get!
   // Mine was '/Users/zellwk/Projects/demo-repos/crud-express-mongo' for this app.
 })
