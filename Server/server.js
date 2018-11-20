@@ -12,11 +12,22 @@ MongoClient.connect('mongodb://yesexy:2411630ed@ds043158.mlab.com:43158/matching
     })
 })
 
-app.post('/quotes', (req, res) => {
-    db.collection('quotes').save(req.body, (err, result) => {
-        if (err) return console.log(err)
+app.use(function (req, res, next) {
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    // Request headers you wish to allow
+    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization, Authentication");
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    // Pass to next layer of middleware
+    next();
+});
 
-        console.log('saved to database')
-        res.redirect('/')
-    })
+app.post('/quotes', (req, res) => {
+    res.status(200)
+    res.end("fdppp")
 })
+
