@@ -1,12 +1,22 @@
 const express = require('express');
 const app = express();
 
-app.listen(8080, function() {
-  console.log('listening on 8080')
+const MongoClient = require('mongodb').MongoClient
+
+MongoClient.connect('mongodb://yesexy:2411630ed@ds043158.mlab.com:43158/matching-str', { useNewUrlParser: true }, (err, client) => {
+    if (err) return console.log(err)
+    db = client.db('matching-str')
+
+    app.listen(4200, () => {
+        console.log('listening on 4200')
+    })
 })
 
-app.get('/', (req, res) => {
-  // res.sendFile('Client/src/index.html')
-  // Note: __dirname is directory that contains the JavaScript source code. Try logging it and see what you get!
-  // Mine was '/Users/zellwk/Projects/demo-repos/crud-express-mongo' for this app.
+app.post('/quotes', (req, res) => {
+    db.collection('quotes').save(req.body, (err, result) => {
+        if (err) return console.log(err)
+
+        console.log('saved to database')
+        res.redirect('/')
+    })
 })
