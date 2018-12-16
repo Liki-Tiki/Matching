@@ -1,0 +1,117 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-12-05T10:39:20.608Z",
+	"__export_source": "insomnia.desktop.app:v6.0.2",
+	"resources": [
+		{
+			"_id": "wrk_d400c37ffaa64426a78d894517317bc4",
+			"created": 1544006007515,
+			"description": "",
+			"modified": 1544006007515,
+			"name": "Matching",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_abcf8b092d204d1ca37ab7343cd1fdf8",
+			"color": null,
+			"created": 1544006008008,
+			"data": {
+				"email": "realague",
+				"password": "test",
+				"token": ""
+			},
+			"isPrivate": false,
+			"metaSortKey": 1544006008009,
+			"modified": 1544006109430,
+			"name": "New Environment",
+			"parentId": "wrk_d400c37ffaa64426a78d894517317bc4",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_ebadd23fa347408d96aae67f752fee31",
+			"cookies": [],
+			"created": 1544006008054,
+			"modified": 1544006008054,
+			"name": "Default Jar",
+			"parentId": "wrk_d400c37ffaa64426a78d894517317bc4",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "fld_a6207e306e574552a818dc263b2b952d",
+			"created": 1544006121667,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1544006121667,
+			"modified": 1544006121667,
+			"name": "Users",
+			"parentId": "wrk_d400c37ffaa64426a78d894517317bc4",
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_6cb1bc49e59d46d7863409e85adc5af2",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"email\": \"{{ email  }}\",\n\t\"password\": \"{{ password}}\"\n}"
+			},
+			"created": 1544006136233,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_0aeb2ee473cd47cf9bf7074b7690381e",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1544006136233,
+			"method": "POST",
+			"modified": 1544006293872,
+			"name": "Register",
+			"parameters": [],
+			"parentId": "fld_a6207e306e574552a818dc263b2b952d",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "",
+			"_type": "request"
+		},
+		{
+			"_id": "req_f346fbac058c443685a3c747d22be63e",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"email\": \"{{ email  }}\",\n\t\"password\": \"{{ password  }}\"\n}"
+			},
+			"created": 1544006223554,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_d5f9d413ad9640d3ba63c4fb308dce2c",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1544006136283,
+			"method": "POST",
+			"modified": 1544006284929,
+			"name": "Login",
+			"parameters": [],
+			"parentId": "fld_a6207e306e574552a818dc263b2b952d",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "",
+			"_type": "request"
+		}
+	]
+}
