@@ -19,6 +19,16 @@ let userSchema = mongoose.Schema({
     email: {
         type: String,
         required: true
+    },
+    verified: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+    admin: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 })
 
