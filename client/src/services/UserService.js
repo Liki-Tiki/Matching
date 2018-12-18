@@ -4,13 +4,13 @@ export default {
   getAll() {
     return Api().get('user/')
   },
-  get() {
-    return Api().get('user/:id')
+  get(id) {
+    return Api().get('user/' + id)
   },
-  update() {
-    return Api().put('user/:id')
+  update(id) {
+    return Api().put('user/' + id)
   },
-  delete() {
-    return Api().delete('user/:id')
+  delete(id) {
+    return Api().delete('user/' + id)
   }
 }
