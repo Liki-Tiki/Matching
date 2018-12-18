@@ -1,86 +1,22 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
-  </div>
+  <v-app>
+    <h1>Trouve ton match idéal</h1>
+    <v-container fluid>
+      <v-layout justify-space-around>
+        <v-flex xs5>
+          <v-layout column>
+            <v-img
+              src="/static/assets/wedding.png"
+              aspect-ratio="0.7"
+              max-height="500"
+              contain>
+            </v-img>
+            <p>Les BDE vous souhaitent de passer une excellente soirée, n'oubliez pas d'echanger vos 06 ;)</p>
+          </v-layout>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-app>
 </template>
 
 <script>
@@ -98,6 +34,7 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
+  font-family: "Arial Black";
 }
 ul {
   list-style-type: none;
