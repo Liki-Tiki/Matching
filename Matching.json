@@ -1,8 +1,8 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2018-12-05T10:39:20.608Z",
-	"__export_source": "insomnia.desktop.app:v6.0.2",
+	"__export_date": "2018-12-17T23:03:14.414Z",
+	"__export_source": "insomnia.desktop.app:v6.3.1",
 	"resources": [
 		{
 			"_id": "wrk_d400c37ffaa64426a78d894517317bc4",
@@ -17,14 +17,10 @@
 			"_id": "env_abcf8b092d204d1ca37ab7343cd1fdf8",
 			"color": null,
 			"created": 1544006008008,
-			"data": {
-				"email": "realague",
-				"password": "test",
-				"token": ""
-			},
+			"data": {},
 			"isPrivate": false,
 			"metaSortKey": 1544006008009,
-			"modified": 1544006109430,
+			"modified": 1545063645451,
 			"name": "New Environment",
 			"parentId": "wrk_d400c37ffaa64426a78d894517317bc4",
 			"_type": "environment"
@@ -44,17 +40,47 @@
 			"description": "",
 			"environment": {},
 			"metaSortKey": -1544006121667,
-			"modified": 1544006121667,
-			"name": "Users",
+			"modified": 1545087181589,
+			"name": "User",
 			"parentId": "wrk_d400c37ffaa64426a78d894517317bc4",
 			"_type": "request_group"
+		},
+		{
+			"_id": "fld_56b3e2516e4e49d780590f49d60d16fb",
+			"created": 1545086935167,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1545086935167,
+			"modified": 1545086935167,
+			"name": "ManageUser",
+			"parentId": "wrk_d400c37ffaa64426a78d894517317bc4",
+			"_type": "request_group"
+		},
+		{
+			"_id": "env_b23c93bd0f084897baf7ac35e7eca073",
+			"color": "#0080ff",
+			"created": 1545063615716,
+			"data": {
+				"email": "julien.delane@epitech.eu",
+				"gender": "MALE",
+				"id": "",
+				"password": "coolpassword",
+				"sexualOrientation": "STRAIGHT",
+				"token": ""
+			},
+			"isPrivate": false,
+			"metaSortKey": 1545063615716,
+			"modified": 1545086995266,
+			"name": "Julien",
+			"parentId": "env_abcf8b092d204d1ca37ab7343cd1fdf8",
+			"_type": "environment"
 		},
 		{
 			"_id": "req_6cb1bc49e59d46d7863409e85adc5af2",
 			"authentication": {},
 			"body": {
 				"mimeType": "application/json",
-				"text": "{\n\t\"email\": \"{{ email  }}\",\n\t\"password\": \"{{ password}}\"\n}"
+				"text": "{\n\t\"email\": \"{{ email  }}\",\n\t\"password\": \"{{ password}}\",\n\t\"sexualOrientation\": \"{{ sexualOrientation  }}\",\n\t\"gender\": \"{{ gender  }}\"\n}"
 			},
 			"created": 1544006136233,
 			"description": "",
@@ -66,9 +92,9 @@
 				}
 			],
 			"isPrivate": false,
-			"metaSortKey": -1544006136233,
+			"metaSortKey": -1544006136333,
 			"method": "POST",
-			"modified": 1544006293872,
+			"modified": 1545068979433,
 			"name": "Register",
 			"parameters": [],
 			"parentId": "fld_a6207e306e574552a818dc263b2b952d",
@@ -78,7 +104,7 @@
 			"settingRebuildPath": true,
 			"settingSendCookies": true,
 			"settingStoreCookies": true,
-			"url": "",
+			"url": "http://localhost:8080/api/user/register",
 			"_type": "request"
 		},
 		{
@@ -100,7 +126,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1544006136283,
 			"method": "POST",
-			"modified": 1544006284929,
+			"modified": 1545002426141,
 			"name": "Login",
 			"parameters": [],
 			"parentId": "fld_a6207e306e574552a818dc263b2b952d",
@@ -110,7 +136,179 @@
 			"settingRebuildPath": true,
 			"settingSendCookies": true,
 			"settingStoreCookies": true,
-			"url": "",
+			"url": "http://localhost:8080/api/user/login",
+			"_type": "request"
+		},
+		{
+			"_id": "req_60305c77787c4f3a951f207ee2a4c6ee",
+			"authentication": {
+				"prefix": "",
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {},
+			"created": 1544990051032,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1544006136183,
+			"method": "DELETE",
+			"modified": 1545073525901,
+			"name": "Delete",
+			"parameters": [],
+			"parentId": "fld_a6207e306e574552a818dc263b2b952d",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/api/user/delete",
+			"_type": "request"
+		},
+		{
+			"_id": "req_a7ca3627c4a84a709e875426d4b88e3f",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"email\": \"{{ email  }}\",\n\t\"password\": \"{{ password  }}\"\n}"
+			},
+			"created": 1545002478035,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_85320b04d76540f892cf3e23965cca67",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1544006136233,
+			"method": "PUT",
+			"modified": 1545063469145,
+			"name": "Update",
+			"parameters": [],
+			"parentId": "fld_a6207e306e574552a818dc263b2b952d",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/api/user/update",
+			"_type": "request"
+		},
+		{
+			"_id": "req_3de1694bf3ed462aaf5681ccf86b0029",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {},
+			"created": 1545086942483,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1545086948407,
+			"method": "GET",
+			"modified": 1545087416650,
+			"name": "GetAll",
+			"parameters": [],
+			"parentId": "fld_56b3e2516e4e49d780590f49d60d16fb",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/api/user",
+			"_type": "request"
+		},
+		{
+			"_id": "req_cb01c2dd25464d0aa5936db7c2f1bb28",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {},
+			"created": 1545086948357,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1545086948357,
+			"method": "GET",
+			"modified": 1545087057224,
+			"name": "Get",
+			"parameters": [],
+			"parentId": "fld_56b3e2516e4e49d780590f49d60d16fb",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/api/user/{{ id  }}",
+			"_type": "request"
+		},
+		{
+			"_id": "req_4b80287837044be384659be26352d4b1",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\n}"
+			},
+			"created": 1545086956209,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_439629c786124d4084a5356b7164453a",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1545086942458,
+			"method": "PUT",
+			"modified": 1545087068764,
+			"name": "Update",
+			"parameters": [],
+			"parentId": "fld_56b3e2516e4e49d780590f49d60d16fb",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/api/user/{{ id  }}",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b10105a6ca404cc2847e4d97d303570b",
+			"authentication": {
+				"token": "{{ token  }}",
+				"type": "bearer"
+			},
+			"body": {},
+			"created": 1545086963826,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1545086942433,
+			"method": "DELETE",
+			"modified": 1545087045122,
+			"name": "Delete",
+			"parameters": [],
+			"parentId": "fld_56b3e2516e4e49d780590f49d60d16fb",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/api/user/{{ id  }}",
 			"_type": "request"
 		}
 	]

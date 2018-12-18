@@ -3,7 +3,7 @@ import store from '@/store/store'
 
 export default () => {
   let instance = axios.create({
-    baseURL: 'http://localhost:8080/',
+    baseURL: 'http://localhost:8080/api/',
     headers: {
       Authorization: `Bearer ${store.state.token}`
     }
