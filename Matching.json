@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2018-12-17T23:03:14.414Z",
+	"__export_date": "2018-12-18T10:59:50.673Z",
 	"__export_source": "insomnia.desktop.app:v6.3.1",
 	"resources": [
 		{
@@ -29,7 +29,7 @@
 			"_id": "jar_ebadd23fa347408d96aae67f752fee31",
 			"cookies": [],
 			"created": 1544006008054,
-			"modified": 1544006008054,
+			"modified": 1545088532619,
 			"name": "Default Jar",
 			"parentId": "wrk_d400c37ffaa64426a78d894517317bc4",
 			"_type": "cookie_jar"
@@ -63,14 +63,14 @@
 			"data": {
 				"email": "julien.delane@epitech.eu",
 				"gender": "MALE",
-				"id": "",
+				"id": "5c1813b5a7588a2e18672cb0",
 				"password": "coolpassword",
 				"sexualOrientation": "STRAIGHT",
-				"token": ""
+				"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ2ZXJpZmllZCI6dHJ1ZSwiYWRtaW4iOnRydWUsImFkbWluX3Njb3BlcyI6WyJlcGl0ZWNoLmV1Il0sIl9pZCI6IjVjMTgxM2I1YTc1ODhhMmUxODY3MmNiMCIsImVtYWlsIjoianVsaWVuLmRlbGFuZUBlcGl0ZWNoLmV1IiwicGFzc3dvcmQiOiIkMmEkMTAkdlVaSWRyOTcueWQ1VUFmQUxJQ1hxT2t4YWlDUHZERy5pMzJHbEZKem11SGdFZy9tcEF6bkMiLCJmaXJzdF9uYW1lIjoianVsaWVuIiwibGFzdF9uYW1lIjoiZGVsYW5lIiwic2V4dWFsX29yaWVudGF0aW9uIjoiU1RSQUlHSFQiLCJnZW5kZXIiOiJNQUxFIiwiX192IjowLCJpYXQiOjE1NDUxMjQ1NDEsImV4cCI6MTU0NTcyOTM0MX0.w2Snw0AmmfZSJuvSt4tADOWweR6aIGTxeekli-JWGLI"
 			},
 			"isPrivate": false,
 			"metaSortKey": 1545063615716,
-			"modified": 1545086995266,
+			"modified": 1545124568849,
 			"name": "Julien",
 			"parentId": "env_abcf8b092d204d1ca37ab7343cd1fdf8",
 			"_type": "environment"
@@ -201,6 +201,8 @@
 		{
 			"_id": "req_3de1694bf3ed462aaf5681ccf86b0029",
 			"authentication": {
+				"disabled": false,
+				"prefix": "",
 				"token": "{{ token  }}",
 				"type": "bearer"
 			},
@@ -211,7 +213,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1545086948407,
 			"method": "GET",
-			"modified": 1545087416650,
+			"modified": 1545128942866,
 			"name": "GetAll",
 			"parameters": [],
 			"parentId": "fld_56b3e2516e4e49d780590f49d60d16fb",
