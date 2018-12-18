@@ -2,12 +2,15 @@ import Api from '@/services/Api'
 
 export default {
   register (credentials) {
-    return Api().post('register', credentials)
+    return Api().post('user/register', credentials)
   },
   login (credentials) {
-    return Api().post('login', credentials)
+    return Api().post('user/login', credentials)
   },
-  updateUser (credentials) {
-    return Api().put('updateUser', credentials)
+  update (credentials) {
+    return Api().put('user/update', credentials)
+  },
+  delete () {
+    return Api().put('user/delete')
   }
 }

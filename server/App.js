@@ -6,6 +6,7 @@ const logger = require('morgan')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose')
+const indexRouter = require('./Routes')
 
 mongoose.connect('mongodb://admin:fF8zd0PL@localhost:27017/matching', { useNewUrlParser: true })
 const db = mongoose.connection
@@ -18,10 +19,6 @@ db.on('error', function (err) {
   console.log(err)
 })
 
-let indexRouter = require('./routes')
-
-require('./passport')
-
 let app = express()
 
 app.set('view engine', 'jade')
@@ -31,7 +28,8 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(cors())
-app.use(indexRouter)
+app.use(/^\/api/, indexRouter)
+require('./Passport')
 app.use(express.static(require('path').join(__dirname, 'dist')))
 
 app.enable('trust proxy')
@@ -47,9 +45,8 @@ app.use(function (err, req, res, next) {
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
 
-  //  render the error page
-  //  res.status(err.status || 500)
-  res.redirect('/')
+  res.status(err.status || 500)
+    res.render('error')
 })
 
 module.exports = app

@@ -18,7 +18,8 @@ let userSchema = mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     verified: {
         type: Boolean,
@@ -29,6 +30,20 @@ let userSchema = mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    admin_scopes: {
+        type: [String],
+        enum: ['epitech.eu']
+    },
+    gender: {
+        type: String,
+        enum: ['MALE', 'FEMALE'],
+        required: true
+    },
+    sexual_orientation: {
+        type: String,
+        enum: ['STRAIGHT', 'HOMO', 'BI'],
+        required: true
     }
 })
 
@@ -53,4 +68,4 @@ userSchema.pre('save', function(next) {
     })
 })
 
-let user = module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema)
