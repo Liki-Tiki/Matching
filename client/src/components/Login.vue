@@ -39,6 +39,7 @@
 
 <script>
 
+import  AuthenticationService from  "../services/AuthenticationService"
   export default {
     name: 'Login',
     data() {
@@ -46,6 +47,22 @@
         username: '',
         password: '',
         error: null
+      }
+    },
+    methods: {
+      async login() {
+        console.log("zsalut")
+        try {
+          let resp = await AuthenticationService.login({username: this.username, password: this.password})
+          this.$store.dispatch('setToken', response.data.token)
+          this.$store.dispatch('setUser', response.data.user)
+          if (this.$store.state.isUserLoggedIn) {
+            this.$router.push('matching')
+          }
+        }
+        catch(error) {
+          this.error = error.response.data.error
+        }
       }
     }
   }
