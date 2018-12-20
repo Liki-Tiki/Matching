@@ -22,6 +22,9 @@ router.delete('/delete',
     isAuthenticated,
     AuthenticationController.delete)
 
+router.get('/confirmation/:token',
+    AuthenticationController.confirmEmail)
+
 router.get('',
     AdminPolicy.isAdmin,
     UserController.getAll)
