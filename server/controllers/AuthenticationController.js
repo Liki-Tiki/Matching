@@ -1,6 +1,8 @@
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 const config = require('../config/Config')
+const nodemailer = require('nodemailer')
+require('dotenv').config()
 
 function jwtSignUser(user) {
     const ONE_WEEK = 60 * 60 * 24 * 7
@@ -8,6 +10,16 @@ function jwtSignUser(user) {
         expiresIn: ONE_WEEK
     })
 }
+
+const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
+    },
+})
+
+const EMAIL_SECRET = 'asdf1093KMnzxcvnkljvasdu09123nlasdasdf'
 
 module.exports = {
     register(req, res) {
@@ -27,6 +39,23 @@ module.exports = {
                     error: 'This email is already in use.'
                 })
             } else {
+                jwt.sign(
+                    {
+                        user: user.toJSON()
+                    },
+                    EMAIL_SECRET,
+                    {
+                        expiresIn: '7d'
+                    },
+                    (err, emailToken) => {
+                        const url = 'http://localhost:8080/api/user/confirmation/' + emailToken
+
+                        transporter.sendMail({
+                            to: email,
+                            subject: 'Confirm Email',
+                            html: `Please click <a href="${url}">here</a> to confirm your email`
+                        })
+                    })
                 res.status(200).send()
             }
         })
@@ -86,5 +115,35 @@ module.exports = {
                 return res.status(200).send()
             }
         })
+    },
+    confirmEmail(req, res) {
+        try {
+            const {user} = jwt.verify(req.params.token, EMAIL_SECRET)
+            User.findById(user._id, function (err, user) {
+                if (err) {
+                    console.log(err)
+                    res.status(400).send({
+                        error: 'An error has occurred.'
+                    })
+                } else {
+                    user.verified = true
+                    user.save(function (err) {
+                        if (err) {
+                            console.log(err)
+                            res.status(400).send({
+                                error: 'An error has occurred.'
+                            })
+                        } else {
+                            res.redirect('http://localhost:8081/#/login')
+                            res.status(200).send()
+                        }
+                    })
+                }
+            })
+        } catch (err) {
+            return res.status(400).send({
+                error: 'An error has occurred.'
+            })
+        }
     }
 }
