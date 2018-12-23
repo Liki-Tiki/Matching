@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const indexRouter = require('./Routes')
+require('dotenv').config()
 
 mongoose.connect('mongodb://admin:fF8zd0PL@localhost:27017/matching', { useNewUrlParser: true })
 const db = mongoose.connection
