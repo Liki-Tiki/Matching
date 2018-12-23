@@ -1,7 +1,11 @@
 const User = require('../models/User')
+const express = require('express')
+const router = express.Router()
+const AdminPolicy = require('../policies/AdminPolicy')
 
-module.exports = {
-    getAll(req, res) {
+router.get('',
+    AdminPolicy.isAdmin,
+    function (req, res) {
         const user = req.user
         let emails = ''
         for (let i = 0; user.admin_scopes.length !== i; i++) {
@@ -16,18 +20,27 @@ module.exports = {
             })
         })
 
-    },
-    get(req, res) {
+    })
+
+router.get('/:id',
+    AdminPolicy.canManageUser,
+    function (req, res) {
         User.findById(req.params.id, function (err, user) {
             res.status(200).send({
                 user: user
             })
         })
-    },
-    update(req, res) {
+    })
+
+router.put('/:id',
+    AdminPolicy.canManageUser,
+    function (req, res) {
 //TODO: func
-    },
-    delete(req, res) {
+    })
+
+router.delete('/:id',
+    AdminPolicy.canManageUser,
+    function (req, res) {
         User.deleteOne({_id: req.params.id}, function (err) {
             if (err) {
                 return res.status(400).send({
@@ -37,5 +50,6 @@ module.exports = {
                 return res.status(200).send()
             }
         })
-    }
-}
+    })
+
+module.exports = router

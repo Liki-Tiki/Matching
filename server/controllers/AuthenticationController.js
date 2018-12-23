@@ -1,8 +1,13 @@
+const express = require('express')
+const router = express.Router()
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 const config = require('../config/Config')
 const nodemailer = require('nodemailer')
 require('dotenv').config()
+
+const isAuthenticated = require('../policies/IsAuthenticated')
+const AuthenticationControllerPolicy = require('../policies/AuthenticationControllerPolicy')
 
 function jwtSignUser(user) {
     const ONE_WEEK = 60 * 60 * 24 * 7
@@ -21,8 +26,9 @@ const transporter = nodemailer.createTransport({
 
 const EMAIL_SECRET = 'asdf1093KMnzxcvnkljvasdu09123nlasdasdf'
 
-module.exports = {
-    register(req, res) {
+router.post('/register',
+    AuthenticationControllerPolicy.register,
+    function (req, res) {
         const {email, password, sexualOrientation, gender} = req.body
         let user = new User({
             email: email,
@@ -59,8 +65,10 @@ module.exports = {
                 res.status(200).send()
             }
         })
-    },
-    login(req, res) {
+    })
+
+router.post('/login',
+    function (req, res) {
         const {email, password} = req.body
         User.findOne({'email': email}, async function (err, user) {
             try {
@@ -86,8 +94,11 @@ module.exports = {
                 })
             }
         })
-    },
-    update(req, res) {
+    })
+
+router.put('/update',
+    isAuthenticated,
+    function (req, res) {
         const {password} = req.body
         let user = req.user
         user.password = password
@@ -103,8 +114,11 @@ module.exports = {
                 token: jwtSignUser(userJson)
             })
         })
-    },
-    delete(req, res) {
+    })
+
+router.delete('/delete',
+    isAuthenticated,
+    function (req, res) {
         const user = req.user
         User.deleteOne({_id: user._id}, function (err) {
             if (err) {
@@ -115,8 +129,10 @@ module.exports = {
                 return res.status(200).send()
             }
         })
-    },
-    confirmEmail(req, res) {
+    })
+
+router.get('/confirmation/:token',
+    function (req, res) {
         try {
             const {user} = jwt.verify(req.params.token, EMAIL_SECRET)
             User.findById(user._id, function (err, user) {
@@ -146,4 +162,6 @@ module.exports = {
             })
         }
     }
-}
+)
+
+module.exports = router
