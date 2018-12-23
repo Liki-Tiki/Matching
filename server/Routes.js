@@ -1,12 +1,15 @@
 const express = require('express')
 let router = express.Router()
-const userRoutes = require('./routes/UserRoutes')
 const formRoutes = require('./routes/FormRoutes')
 const personalQuestionRoutes = require('./routes/PersonalQuestionRoutes')
 const formQuestionRoutes = require('./routes/FormQuestionRoutes')
 const answerRoutes = require('./routes/AnswerRoutes')
+const UserController = require('./controllers/UserController')
+const AuthenticationController = require('./controllers/AuthenticationController')
 
-router.use(/^\/user/, userRoutes)
+router.use(/^\/user/, AuthenticationController)
+
+router.use(/^\/users/, UserController)
 
 router.use(/^\/form/, formRoutes)
 
