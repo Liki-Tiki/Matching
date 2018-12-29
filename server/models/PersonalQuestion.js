@@ -6,8 +6,9 @@ let personalQuestionSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    link_personal_answer: {
-        type: [schema.ObjectId]
+    form_question_fk_id: {
+        type: schema.ObjectId,
+        required: true
     },
     answers: {
         type: [schema.ObjectId],

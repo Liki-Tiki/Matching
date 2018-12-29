@@ -6,12 +6,17 @@ let formSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    personal_questions: {
-        type: [schema.ObjectId]
-    },
     form_questions: {
         type: [schema.ObjectId],
         required: true
+    },
+    active: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+    accessibility_scopes: {
+        type: [String]
     }
 })
 
