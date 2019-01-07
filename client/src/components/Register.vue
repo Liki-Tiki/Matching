@@ -25,6 +25,16 @@
                 type="password"
                 v-model="confirmPassword"
                 autocomplete="new-password"></v-text-field>
+              <v-text-field
+                label="Gender"
+                type="gender"
+                v-model="gender">
+                </v-text-field>
+              <v-text-field
+                label="Orientation"
+                type="orientation"
+                v-model="orientation">
+              </v-text-field>
               <br/>
               <v-alert
                 v-if="error"
@@ -56,6 +66,8 @@
         username: '',
         password: '',
         confirmPassword: '',
+        gender: '',
+        orientation: '',
         error: null
       }
     }
