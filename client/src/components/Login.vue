@@ -58,6 +58,7 @@ import  AuthenticationService from  "../services/AuthenticationService"
           this.$store.dispatch('setUser', response.data.user)
           if (this.$store.state.isUserLoggedIn) {
             this.$router.push('matching')
+
           }
         }
         catch(error) {
