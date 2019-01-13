@@ -29,6 +29,10 @@ module.exports = {
             } else {
                 req.user = user
                 if (user.admin === true) {
+                    if (user.admin_scopes[0] === '*') {
+                        next()
+                        return
+                    }
                     User.findOne({'_id': req.params.id}, async function (error, userToManage) {
                         try {
                             for (let i = 0; i !== user.admin_scopes.length; i++) {

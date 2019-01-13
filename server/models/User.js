@@ -34,16 +34,6 @@ let userSchema = mongoose.Schema({
     admin_scopes: {
         type: [String],
         enum: ['epitech.eu']
-    },
-    gender: {
-        type: String,
-        enum: ['MALE', 'FEMALE'],
-        required: true
-    },
-    sexual_orientation: {
-        type: String,
-        enum: ['STRAIGHT', 'HOMO', 'BI'],
-        required: true
     }
 })
 

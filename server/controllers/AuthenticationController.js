@@ -29,14 +29,12 @@ const EMAIL_SECRET = 'asdf1093KMnzxcvnkljvasdu09123nlasdasdf'
 router.post('/register',
     AuthenticationControllerPolicy.register,
     function (req, res) {
-        const {email, password, sexualOrientation, gender} = req.body
+        const {email, password} = req.body
         let user = new User({
             email: email,
             password: password,
             first_name: email.toString().slice(0, email.toString().search('\\.')),
             last_name: email.toString().slice(email.toString().search('\\.') + 1, email.toString().search('@')),
-            sexual_orientation: sexualOrientation,
-            gender: gender
         })
         user.save(function (err) {
             if (err) {
@@ -62,7 +60,9 @@ router.post('/register',
                             html: `Please click <a href="${url}">here</a> to confirm your email`
                         })
                     })
-                res.status(200).send()
+                res.status(200).send({
+                    user: user
+                })
             }
         })
     })
