@@ -34,7 +34,7 @@ router.post('/register',
             email: email,
             password: password,
             first_name: email.toString().slice(0, email.toString().search('\\.')),
-            last_name: email.toString().slice(email.toString().search('\\.') + 1, email.toString().search('@')),
+            last_name: email.toString().slice(email.toString().search('\\.') + 1, email.toString().search('@'))
         })
         user.save(function (err) {
             if (err) {
@@ -151,7 +151,7 @@ router.get('/confirmation/:token',
                             })
                         } else {
                             res.redirect('http://localhost:8081/#/login')
-                            res.status(200).send()
+                            res.status(300).send()
                         }
                     })
                 }

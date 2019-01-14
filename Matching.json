@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2019-01-13T21:20:56.040Z",
+	"__export_date": "2019-01-14T11:45:39.961Z",
 	"__export_source": "insomnia.desktop.app:v6.3.2",
 	"resources": [
 		{
@@ -114,7 +114,7 @@
 			"authentication": {},
 			"body": {
 				"mimeType": "application/json",
-				"text": "{\n\t\"email\": \"{{ email  }}\",\n\t\"password\": \"{{ password}}\",\n\t\"sexualOrientation\": \"{{ sexualOrientation  }}\",\n\t\"gender\": \"{{ gender  }}\"\n}"
+				"text": "{\n\t\"email\": \"{{ email  }}\",\n\t\"password\": \"{{ password}}\"\n}"
 			},
 			"created": 1544006136233,
 			"description": "",
@@ -128,7 +128,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1544006136333,
 			"method": "POST",
-			"modified": 1546027157520,
+			"modified": 1547466317846,
 			"name": "Register",
 			"parameters": [],
 			"parentId": "fld_a6207e306e574552a818dc263b2b952d",
